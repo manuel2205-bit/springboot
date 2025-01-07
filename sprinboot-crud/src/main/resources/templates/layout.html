@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Mi Aplicación</title>
+    <link href="../static/css/bootstrap.css" rel="stylesheet"
+          th:href="@{/css/bootstrap.css}">
+</head>
+<body>
+    <!-- Encabezado común -->
+    <header style="display: flex; justify-content: space-between; align-items: center; padding: 10px; background-color: #f5f5f5;">
+        <div style="display: flex; align-items: center;">
+            <img src="user-icon.png" alt="Icono Usuario" style="width: 40px; height: 40px; margin-right: 10px;">
+            <span th:if="${#authentication.principal != null}">
+                <span th:text="${#authentication.name}" style="font-weight: bold;">Usuario</span> <!-- Nombre del usuario logeado -->
+            </span>
+            <span th:if="${#authentication.principal == null}">
+                No has iniciado sesión.
+            </span>
+        </div>
+        <form th:action="@{/logout}" method="post">
+            <button type="submit" style="background-color: red; color: white; border: none; padding: 10px;">Salir</button>
+        </form>
+    </header>
+
+    <!-- Fragmento para el contenido de la página -->
+    <main>
+        <div th:fragment="body">
+            <!-- Este espacio será reemplazado por el contenido específico de cada página -->
+        </div>
+    </main>
+</body>
+</html>
+
+
+
